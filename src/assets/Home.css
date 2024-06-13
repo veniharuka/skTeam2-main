@@ -1,0 +1,1034 @@
+기본 스타일 설정 * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+/* 반응형 레이아웃을 위해 뷰포트 설정 */
+html {
+  font-size: 16px;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: #f1f1f1;
+}
+
+.container {
+  max-width: 1200px;
+  height: 812px;
+  margin: 0 auto;
+  background-color: white;
+  padding: 0;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 30px;
+}
+
+/* 네비게이션 바 스타일 */
+.navbar {
+  background-color: #333;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  position: relative;
+}
+
+.nav-logo {
+  font-size: 1.5rem;
+}
+
+/* 이미지 크기 조절을 위한 스타일 */
+.nav-logo img {
+  height: 50px; /* 헤더 크기에 맞추어 이미지 높이 조정 */
+  width: auto; /* 비율 유지 */
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+}
+
+.nav-links li {
+  margin-left: 1rem;
+}
+
+.nav-links a {
+  color: #fff;
+  text-decoration: none;
+}
+
+/* 햄버거 버튼 스타일 */
+.nav-toggle {
+  display: none; /* 기본적으로 햄버거 버튼은 보이지 않음 */
+  flex-direction: column;
+  cursor: pointer;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
+
+.nav-toggle .bar {
+  width: 25px;
+  height: 3px;
+  background-color: #fff;
+  margin: 4px 0;
+}
+
+/* 버튼 스타일 수정 */
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+}
+.button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn-group {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0;
+}
+
+.btn-group .btn {
+  width: auto;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+}
+.btn-group .btn i {
+  left: 5px;
+}
+.btn-primary {
+  background-color: #eeeeee;
+  border-color: #eeeeee;
+  color: #999;
+  font-weight: bold;
+}
+
+.btn-primary:hover {
+  background-color: #96e8cd;
+  border-color: #96e8cd;
+  font-weight: bold;
+  color: black;
+}
+.btn-primary:active,
+.btn-primary:focus {
+  background-color: #96e8cd;
+  border-color: #96e8cd;
+  color: black;
+}
+
+.start-btn {
+  border-radius: 50rem 0 0 50rem;
+}
+
+.end-btn {
+  border-radius: 0 50rem 50rem 0;
+}
+
+.btn-selected {
+  background-color: #96e8cd;
+  border-color: #96e8cd;
+  font-weight: bold;
+  color: black;
+}
+.btn-selected-active {
+  background-color: #96e8cd;
+  border-color: #96e8cd;
+}
+
+.rounded-pill {
+  border-radius: 50rem;
+}
+
+.btn-group-sm > .btn {
+  padding: 0.25rem 0.5rem;
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+.btn-group-sm {
+  --bs-btn-padding-y: 0.25rem;
+  --bs-btn-padding-x: 0.5rem;
+  --bs-btn-font-size: 0.875rem;
+  --bs-btn-border-radius: 50rem;
+}
+
+button:focus {
+  outline: none;
+}
+
+/* 헤더 스타일 수정 */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  padding: 1rem;
+}
+
+.header-left,
+.header-right {
+  display: flex;
+}
+.header-left button,
+.header-right button {
+  font-size: 35px;
+}
+.header-center {
+  flex: 1;
+  text-align: center;
+}
+
+.header h1 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.header p {
+  font-size: 1.5rem;
+  color: black;
+  margin: 0;
+}
+
+/* 요약 섹션 스타일 */
+.summary {
+  display: flex;
+  justify-content: space-around;
+  margin: 1rem 0;
+  align-items: center;
+}
+
+.summary button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 10px;
+  background-color: #a7dad0;
+  position: relative;
+}
+.income {
+  font-weight: bold;
+  border-right: 10px;
+}
+.totalBalance {
+  font-weight: bold;
+  background: none;
+  display: flex;
+  font-size: 16px;
+  padding: 10px;
+  background-color: #a7dad0;
+}
+
+.summary button:focus {
+  outline: none;
+}
+.income,
+.expenses,
+.total {
+  font-weight: bold;
+}
+
+/* 트랜잭션 스타일 */
+.transactions {
+  margin-bottom: 1rem;
+} /* 기본 스타일 설정 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+/* 반응형 레이아웃을 위해 뷰포트 설정 */
+html {
+  font-size: 16px;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: #f1f1f1;
+  overflow: auto;
+}
+
+.container {
+  max-width: 1200px;
+  min-height: 812px; /* 최소 높이로 설정 */
+  margin: 0 auto;
+  background-color: white;
+  padding: 0;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 30px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 네비게이션 바 스타일 */
+.navbar {
+  background-color: #333;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+}
+
+.nav-logo {
+  font-size: 1.5rem;
+}
+
+/* 이미지 크기 조절을 위한 스타일 */
+.nav-logo img {
+  height: 50px; /* 헤더 크기에 맞추어 이미지 높이 조정 */
+  width: auto; /* 비율 유지 */
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+}
+
+.nav-links li {
+  margin-left: 1rem;
+}
+
+.nav-links a {
+  color: #fff;
+  text-decoration: none;
+}
+
+/* 햄버거 버튼 스타일 */
+.nav-toggle {
+  display: none; /* 기본적으로 햄버거 버튼은 보이지 않음 */
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.nav-toggle .bar {
+  width: 25px;
+  height: 3px;
+  background-color: #fff;
+  margin: 4px 0;
+}
+
+/* 버튼 스타일 수정 */
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+}
+.button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn-group {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0;
+}
+
+.btn-group .btn {
+  width: auto;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+}
+.btn-group .btn i {
+  left: 5px;
+}
+.btn-primary {
+  background-color: #eeeeee;
+  border-color: #eeeeee;
+  color: #999;
+  font-weight: bold;
+}
+
+.btn-primary:hover {
+  background-color: #96e8cd;
+  border-color: #96e8cd;
+  font-weight: bold;
+  color: black;
+}
+.btn-primary:active,
+.btn-primary:focus {
+  background-color: #96e8cd;
+  border-color: #96e8cd;
+  color: black;
+}
+
+.start-btn {
+  border-radius: 50rem 0 0 50rem;
+}
+
+.end-btn {
+  border-radius: 0 50rem 50rem 0;
+}
+
+.btn-selected {
+  background-color: #96e8cd;
+  border-color: #96e8cd;
+  font-weight: bold;
+  color: black;
+}
+.btn-selected-active {
+  background-color: #96e8cd;
+  border-color: #96e8cd;
+}
+
+.rounded-pill {
+  border-radius: 50rem;
+}
+
+.btn-group-sm > .btn {
+  padding: 0.25rem 0.5rem;
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+.btn-group-sm {
+  --bs-btn-padding-y: 0.25rem;
+  --bs-btn-padding-x: 0.5rem;
+  --bs-btn-font-size: 0.875rem;
+  --bs-btn-border-radius: 50rem;
+}
+
+button:focus {
+  outline: none;
+}
+
+/* 헤더 스타일 수정 */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  padding: 1rem;
+}
+
+.header-left,
+.header-right {
+  display: flex;
+}
+.header-left button,
+.header-right button {
+  font-size: 35px;
+}
+.header-center {
+  flex: 1;
+  text-align: center;
+}
+
+.header h1 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.header p {
+  font-size: 1.5rem;
+  color: black;
+  margin: 0;
+}
+
+/* 요약 섹션 스타일 */
+.summary {
+  display: flex;
+  justify-content: space-around;
+  margin: 1rem 0;
+  align-items: center;
+}
+
+.summary button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 10px;
+  background-color: #a7dad0;
+  position: relative;
+}
+.income {
+  font-weight: bold;
+}
+.totalBalance {
+  font-weight: bold;
+  background: none;
+  display: flex;
+  font-size: 16px;
+  padding: 10px;
+  background-color: #a7dad0;
+}
+
+.summary button:focus {
+  outline: none;
+}
+.income,
+.expenses,
+.total {
+  font-weight: bold;
+}
+
+/* 트랜잭션 스타일 */
+.transactions {
+  margin-bottom: 1rem;
+  flex: 1; /* 여유 공간 차지 */
+  overflow-y: auto; /* 세로 스크롤 */
+}
+
+.transaction {
+  background-color: #f9f9f9;
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.transaction-date {
+  background-color: #c9ebe4;
+  flex: 1;
+  border-radius: 5px;
+}
+
+.transaction-details {
+  display: flex;
+  justify-content: space-between;
+}
+.bold-date {
+  font-weight: bold;
+}
+
+.description,
+.method,
+.amount {
+  flex: 1;
+}
+
+.income {
+  color: blue;
+  font-style: bold;
+}
+
+.expense,
+.expenses {
+  color: red;
+  font-weight: bold;
+}
+
+/* 플로팅 액션 버튼 스타일 */
+/* 푸터 스타일 */
+.footer {
+  background-color: #a7dad0;
+  color: #fff;
+  padding: 1rem;
+  border-radius: 100px;
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.1rem;
+}
+
+/* 달력 모달 스타일 */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  max-width: 500px;
+  position: relative;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* 달력 스타일 */
+#calendar {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+#calendar table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+#calendar th,
+#calendar td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+  cursor: pointer;
+}
+
+#calendar th {
+  background-color: #f4f4f4;
+}
+
+/* 선택된 날짜 스타일 */
+.selected {
+  background-color: #007bff;
+  color: white;
+}
+.headerName {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer i {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.input-form {
+  padding: 20px;
+  background-color: #f0f0f0;
+  border-radius: 10px;
+}
+.input-header {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 20px;
+}
+.input-header button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #ccc;
+  cursor: pointer;
+}
+.input-header button.active {
+  background-color: #007bff;
+  color: white;
+}
+.input-fields div {
+  margin-bottom: 15px;
+}
+.input-fields label {
+  display: block;
+  margin-bottom: 5px;
+}
+.input-fields input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* 모바일 디바이스 대응을 위한 미디어 쿼리 */
+@media (max-width: 600px) {
+  .navbar {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .nav-toggle {
+    display: flex;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    width: 100%;
+    display: none;
+    position: absolute;
+    top: 3.5rem;
+  }
+}
+
+.transaction {
+  background-color: #f9f9f9;
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.transaction-date {
+  background-color: #c9ebe4;
+  border-radius: 5px;
+  padding: 10px 15px;
+}
+
+.transaction-date:first-child {
+  margin-top: 10px;
+}
+
+.transaction-details {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 10px 15px;
+  font-weight: bold;
+}
+
+.transaction-details .blue {
+  color: blue;
+}
+
+.transaction-details .red {
+  color: red;
+}
+
+.bold-date {
+  font-weight: bold;
+}
+
+.income {
+  color: blue;
+  font-style: bold;
+}
+
+.expense,
+.expenses {
+  color: red;
+  font-weight: bold;
+}
+
+/* 플로팅 액션 버튼 스타일 */
+/* 푸터 스타일 */
+.footer {
+  background-color: #a7dad0;
+  color: #fff;
+  padding: 1rem;
+  border-radius: 100px;
+  position: absolute;
+  bottom: 1.5rem;
+  right: 1.1rem;
+}
+
+/* 달력 모달 스타일 */
+.modinl {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  max-width: 500px;
+  position: relative;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* 달력 스타일 */
+#calendar {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+#calendar table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+#calendar th,
+#calendar td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+  cursor: pointer;
+}
+
+#calendar th {
+  background-color: #f4f4f4;
+}
+
+/* 선택된 날짜 스타일 */
+.selected {
+  background-color: #007bff;
+  color: white;
+}
+.headerName {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer i {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+/* 여기부터는 인풋 모달창 */
+.input-form {
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 40px;
+}
+.input-header {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 40px;
+}
+.input-header button {
+  position: relative;
+  justify-content: center; /* btn_group을 가운데 정렬 */
+  flex: 1;
+  margin: 5px;
+  padding: 10px 0;
+  border-radius: 15px;
+  border: none;
+
+  background-color: #eeeeee;
+  width: 113px;
+  height: 46px;
+
+  cursor: pointer;
+
+  font-weight: bold;
+  font-size: 15px;
+  color: #111111;
+}
+/* .input-header button:hover {
+  background-color: #a7dad0;
+  cursor: pointer;
+} */
+.input-header button.active {
+  background-color: #96e8cd;
+  color: #111111;
+}
+.input-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background-color: #adcdd0;
+  border-radius: 15px;
+  padding: 30px;
+
+  width: 100%;
+  height: 100%;
+
+  color: #111111;
+  font-weight: bold;
+}
+
+.input-fields div {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  /* flex-direction: row; */
+}
+
+.input-fields input,
+.input-fields select {
+  flex: 5;
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #bdbdbd;
+  border-radius: 10px;
+  box-sizing: border-box;
+  margin-left: 5px;
+}
+
+.input-fields label {
+  /* flex: 1;  */
+  width: 40px;
+  text-align: center;
+  margin-right: 5px;
+  align-items: center;
+}
+
+/* +버튼을 눌렀을 때 생기는 입력 모달 창 */
+.modal {
+  display: flex; /* 모달이 제대로 표시되도록 flex 설정 */
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+}
+.modal.modal-fullsize {
+  width: 100%;
+  height: 100%;
+  margin: 10px;
+  padding: 10px;
+}
+
+.modal-content {
+  background: white;
+  padding: 20px;
+  border-radius: 5px;
+  max-width: 500px;
+  width: 90%;
+}
+
+.addButton {
+  display: flex;
+  justify-content: space-between; /* 저장 버튼과 닫기 버튼을 좌우로 정렬 */
+  align-items: center; /* 세로 중앙 정렬 */
+  margin-top: 20px;
+}
+
+.addButton button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+}
+
+.addButton button:hover {
+  background-color: #a7dad0;
+}
+/* 새로 추가한 css */
+.calendar_header {
+  display: flex;
+  height: 80px;
+  font-size: 17px;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px 0 20px;
+}
+
+.calendar_month {
+  font-weight: bold;
+}
+
+.transaction-date {
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+
+.transaction {
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.transaction-details {
+  display: flex;
+  justify-content: space-between;
+}
+
+.method {
+  flex-basis: 80px;
+  flex-grow: 0;
+}
+
+.description {
+  flex-basis: 100px;
+}
+
+.blue {
+  color: blue;
+}
+
+.red {
+  color: red;
+}
+
+
+.transaction-details .delete-button {
+  background-color: transparent;
+  color: #23b685; /* 또는 다른 적절한 색상 */
+  border: none;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.transaction-details .delete-button:hover {
+  text-decoration: underline;
+}
+.no-transactions {
+  color: #999;
+  font-style: italic;
+}
+/* 모바일 디바이스 대응을 위한 미디어 쿼리 */
+@media (max-width: 600px) {
+  .navbar {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .nav-toggle {
+    display: flex;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    width: 100%;
+    display: none;
+    position: absolute;
+    top: 3.5rem;
+  }
+}

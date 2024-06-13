@@ -1,0 +1,157 @@
+{
+  "income": [
+    {
+      "id": "1",
+      "date": "2024-05-08T14:28:04.419Z",
+      "category": "월급",
+      "amount": 5000000,
+      "content": "6월 월급"
+    },
+    {
+      "id": "2",
+      "date": "2024-06-01T14:28:04.419Z",
+      "category": "기타",
+      "amount": 100000,
+      "content": "배민 배달"
+    },
+    {
+      "id": "7022",
+      "date": "2024-06-02T14:28:04.419Z",
+      "category": "용돈",
+      "amount": "300000",
+      "content": "6월 이자"
+    },
+    {
+      "id": "e24f",
+      "date": "2024-06-10T15:12:07.067Z",
+      "category": "용돈",
+      "amount": "10000000",
+      "content": "코인 대박"
+    },
+    {
+      "id": "233e",
+      "type": "income",
+      "date": "2024-06-12",
+      "amount": 10000,
+      "category": "식비",
+      "content": "33333"
+    },
+    {
+      "id": "bf34",
+      "type": "income",
+      "date": "2024-06-05",
+      "amount": 10000,
+      "category": "교통비",
+      "content": "####"
+    },
+    {
+      "id": "ce7e",
+      "type": "income",
+      "date": "2024-06-17",
+      "amount": 10000,
+      "category": "기타",
+      "content": "1234"
+    },
+    {
+      "id": "2ccd",
+      "type": "income",
+      "date": "2024-06-04",
+      "amount": 13000,
+      "category": "식비",
+      "content": "테스트"
+    }
+  ],
+  "incomeCategory": [
+    {
+      "name": "월급",
+      "id": "63fd"
+    },
+    {
+      "name": "용돈",
+      "id": "79f9"
+    },
+    {
+      "name": "기타",
+      "id": "a081"
+    }
+  ],
+  "expense": [
+    {
+      "id": "1",
+      "date": "2024-05-05T02:00:27.837Z",
+      "category": "식비",
+      "amount": 6000,
+      "content": "세종대 학식"
+    },
+    {
+      "id": "2",
+      "date": "2024-06-01T02:00:27.837Z",
+      "category": "식비",
+      "amount": 70000,
+      "content": "건대 술익는 마을"
+    },
+    {
+      "id": "4d17",
+      "date": "2024-06-10T02:00:27.837Z",
+      "category": "교통비",
+      "amount": "65000",
+      "content": "기후 동행 카드 구매"
+    },
+    {
+      "id": "4589",
+      "date": "2024-06-10T03:11:40.948Z",
+      "category": "기타",
+      "amount": "88000",
+      "content": "전기세 납부"
+    },
+    {
+      "id": "232e",
+      "date": "2024-06-10T14:27:21.372Z",
+      "category": "교통비",
+      "amount": "10000",
+      "content": "카카오택시"
+    },
+    {
+      "id": "4cf3",
+      "type": "expense",
+      "date": "2024-06-11",
+      "amount": 321,
+      "category": "식비",
+      "content": "3333"
+    },
+    {
+      "id": "ce33",
+      "type": "expense",
+      "date": "2024-06-18",
+      "amount": 30000,
+      "category": "식비",
+      "description": "샌드위치"
+    },
+    {
+      "id": "f308",
+      "type": "expense",
+      "date": "2024-07-19",
+      "amount": 500000,
+      "category": "기타",
+      "description": "호텔"
+    }
+  ],
+  "expenseCategory": [
+    {
+      "name": "식비",
+      "id": "df57"
+    },
+    {
+      "name": "교통비",
+      "id": "caa9"
+    },
+    {
+      "name": "패션/미용",
+      "id": "0be8"
+    },
+    {
+      "name": "기타",
+      "id": "7170"
+    }
+  ]
+}

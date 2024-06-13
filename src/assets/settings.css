@@ -1,0 +1,173 @@
+.container {
+  width: 375px;
+  height: 812px;
+  position: relative;
+  background: white;
+  box-shadow: 40px 44px 64px rgba(0, 0, 0, 0.15);
+  border-radius: 40px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.invisible_box_for_text {
+  position: absolute;
+  width: 375px;
+  height: 64px;
+  left: 0;
+  top: 0;
+  display: flex;
+  justify-content: center; /* 수평 가운데 정렬 */
+  align-items: center; /* 수직 가운데 정렬 */
+}
+
+.arrow_go_back {
+  position: absolute;
+  left: 30px; /* 오른쪽 끝으로 정렬 */
+  font-size: 24px;
+  color: #111111;
+  cursor: pointer;
+  font-size: 35px;
+}
+
+/* 설정, 이름에 적용할 스타일 */
+.bold_text {
+  font-family: 'Mukta';
+  font-style: normal;
+  font-weight: 800;
+  font-size: 16px;
+  color: #111111;
+}
+
+.mini_menu {
+  position: absolute;
+  color: black;
+  font-size: 14px;
+  font-family: Inter;
+  font-weight: 100;
+  word-wrap: break-word;
+  left: 10px;
+  transform: none;
+}
+
+.group {
+  position: absolute;
+}
+
+.rectangle {
+  position: absolute;
+}
+
+.text {
+  display: flex;
+  position: relative;
+  align-items: center;
+  width: 100%;
+  color: black;
+  font-size: 16px;
+  font-family: Inter;
+  font-weight: 500;
+  word-wrap: break-word;
+}
+
+/* text 옆쪽에 올 화살표 스타일 지정 */
+.arrow_next_text {
+  position: absolute;
+  right: 60px; /* 오른쪽 끝으로 정렬 */
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 35px;
+}
+
+.rotated {
+  transform: rotate(180deg);
+  transform-origin: 0 0;
+}
+
+.bordered {
+  border: 1px #999999 solid;
+}
+
+/* 프로필 이미지 css */
+
+.ellipse {
+  border-radius: 50%;
+  position: absolute;
+  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.06);
+  top: 95px;
+  left: 50%;
+  transform: translateX(-50%); /* 수정: 가운데 정렬을 위해 추가 */
+  width: 248px;
+  height: 248px;
+  background: #dbdbdb url('아직안정해진이미지.jpg') center/cover;
+}
+
+.name {
+  position: absolute;
+  color: black;
+  font-size: 18px;
+  font-family: Mukta;
+  font-weight: 600;
+  line-height: 20.52px;
+  word-wrap: break-word;
+  text-align: center;
+}
+
+/* 메뉴 그룹 설정 */
+.group1 {
+  position: absolute;
+  top: 440px;
+  left: 0px;
+  width: 376px;
+  height: 65px;
+  background: white;
+}
+.group2 {
+  position: absolute;
+  top: 502px;
+  left: 0px;
+  width: 376px;
+  height: 65px;
+  background: white;
+  border-bottom: 1px solid #dbdbdb;
+}
+
+.group3 {
+  position: absolute;
+  top: 612px;
+  left: 0px;
+  width: 376px;
+  height: 65px;
+  background: white;
+}
+.group4 {
+  position: absolute;
+  top: 677px;
+  left: -1px;
+  width: 376px;
+  height: 65px;
+  background: white;
+}
+
+.group5 {
+  position: absolute;
+  top: 742px;
+  left: -1px;
+  width: 376px;
+  height: 65px;
+  background: white;
+  overflow: hidden;
+}
+
+.mini_menu,
+.group1 .text,
+.group2 .text,
+.group3 .text,
+.group4 .text,
+.group5 .text {
+  left: 20px; /* 왼쪽 정렬 및 여백 추가 */
+  transform: none; /* transform 속성 초기화 */
+  top: 50%; /* 부모 요소의 높이의 절반 위치에 정렬 */
+  transform: translateY(
+    -50%
+  ); /* 요소의 높이의 절반만큼 위로 이동하여 가운데 정렬 */
+}

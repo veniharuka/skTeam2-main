@@ -1,0 +1,269 @@
+/* 기본 스타일 설정 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+/* 반응형 레이아웃을 위해 뷰포트 설정 */
+html {
+  font-size: 16px;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: #f1f1f1;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  background-color: white;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  height: 900px;
+}
+
+/* 네비게이션 바 스타일 */
+.navbar {
+  background-color: #333;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  position: relative;
+}
+
+.nav-logo {
+  font-size: 1.5rem;
+}
+
+/* 이미지 크기 조절을 위한 스타일 */
+.nav-logo img {
+  height: 50px; /* 헤더 크기에 맞추어 이미지 높이 조정 */
+  width: auto; /* 비율 유지 */
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+}
+
+.nav-links li {
+  margin-left: 1rem;
+}
+
+.nav-links a {
+  color: #fff;
+  text-decoration: none;
+}
+
+/* 햄버거 버튼 스타일 */
+.nav-toggle {
+  display: none; /* 기본적으로 햄버거 버튼은 보이지 않음 */
+  flex-direction: column;
+  cursor: pointer;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
+
+.nav-toggle .bar {
+  width: 25px;
+  height: 3px;
+  background-color: #fff;
+  margin: 4px 0;
+}
+
+/* 헤더 스타일 */
+.header {
+  background-color: #f4f4f4;
+  text-align: center;
+  padding: 2rem 1rem;
+}
+
+.header h1 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.header p {
+  font-size: 1rem;
+  color: #666;
+}
+
+/* 메인 컨텐츠 스타일 */
+.main-content {
+  flex: 1;
+  padding: 1rem;
+}
+
+.section {
+  margin-bottom: 2rem;
+}
+
+.section h2 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.section p {
+  font-size: 1rem;
+  color: #333;
+}
+
+/* 폼 컨테이너 스타일 */
+.form-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.form-container input,
+.form-container select,
+.form-container button {
+  padding: 0.5rem;
+  font-size: 1rem;
+}
+
+/* 가계부 테이블 스타일 */
+.ledger-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.ledger-table th,
+.ledger-table td {
+  border: 1px solid #ccc;
+  padding: 0.5rem;
+  text-align: left;
+}
+
+.ledger-table th {
+  background-color: #f4f4f4;
+}
+
+/* 푸터 스타일 */
+.footer {
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  padding: 1rem;
+}
+
+/* 달력 모달 스타일 */
+.modal {
+  display: none; /* 모달 기본적으로 숨김 */
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  max-width: 500px;
+  position: relative;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* 달력 스타일 */
+#calendar {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+#calendar table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+#calendar th,
+#calendar td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+  cursor: pointer;
+}
+
+#calendar th {
+  background-color: #f4f4f4;
+}
+
+/* 선택된 날짜 스타일 */
+.selected {
+  background-color: #007bff;
+  color: white;
+}
+
+/* 모바일 디바이스 대응을 위한 미디어 쿼리 */
+@media (max-width: 600px) {
+  .navbar {
+    flex-direction: row; /* 네비게이션 바를 가로로 유지 */
+    justify-content: space-between;
+  }
+
+  .nav-toggle {
+    display: flex; /* 화면이 좁아질 때 햄버거 버튼 보이게 설정 */
+  }
+
+  .nav-links {
+    flex-direction: column;
+    width: 100%;
+    display: none; /* 기본적으로 네비게이션 링크 숨김 */
+    position: absolute;
+    top: 3.5rem; /* 햄버거 버튼 아래에 네비게이션 링크 표시 */
+    left: 0;
+    background-color: #333;
+  }
+
+  .nav-links li {
+    margin: 0.5rem 0;
+    text-align: center;
+  }
+
+  .header h1 {
+    font-size: 1.5rem;
+  }
+
+  .header p {
+    font-size: 0.875rem;
+  }
+
+  .section h2 {
+    font-size: 1.25rem;
+  }
+
+  .section p {
+    font-size: 0.875rem;
+  }
+}
