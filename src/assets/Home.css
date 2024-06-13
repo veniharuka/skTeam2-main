@@ -996,6 +996,9 @@ button:focus {
 .red {
   color: red;
 }
+.transactions::-webkit-scrollbar {
+  display: none;
+}
 
 
 .transaction-details .delete-button {

@@ -3,15 +3,30 @@
     <div class="header_bar">
       <div class="btn_group_container">
         <div class="btn_group">
-          <router-link to="/" class="btn left" :class="{ active: view === 'daily' }">일일</router-link>
-          <router-link to="/cal" class="btn middle" :class="{ active: view === 'monthly' }">월별</router-link>
-          <router-link to="/chart" class="btn right" :class="{ active: view === 'summary' }">합계</router-link>
+          <router-link
+            to="/"
+            class="btn left"
+            :class="{ active: view === 'daily' }"
+            >일일</router-link
+          >
+          <router-link
+            to="/cal"
+            class="btn middle"
+            :class="{ active: view === 'monthly' }"
+            >월별</router-link
+          >
+          <router-link
+            to="/chart"
+            class="btn right"
+            :class="{ active: view === 'summary' }"
+            >합계</router-link
+          >
         </div>
       </div>
 
-      <router-link to="/settings" class="settings_icon">
+      <!-- <router-link to="/settings" class="settings_icon">
         <i class="bi bi-gear-fill"></i>
-      </router-link>
+      </router-link> -->
     </div>
   </header>
 </template>
@@ -23,10 +38,25 @@ import { useRouter, useRoute } from 'vue-router';
 // const route = ref('monthly'); // 반응형 데이터로 'monthly'를 기본값으로 설정
 const router = useRouter();
 const route = useRoute();
-const view = ref(route.path === '/' ? 'daily' : route.path === '/cal' ? 'monthly' : route.path === '/chart' ? 'summary' : '');
+const view = ref(
+  route.path === '/'
+    ? 'daily'
+    : route.path === '/cal'
+    ? 'monthly'
+    : route.path === '/chart'
+    ? 'summary'
+    : ''
+);
 
 watchEffect(() => {
-  view.value = route.path === '/' ? 'daily' : route.path === '/cal' ? 'monthly' : route.path === '/chart' ? 'summary' : '';
+  view.value =
+    route.path === '/'
+      ? 'daily'
+      : route.path === '/cal'
+      ? 'monthly'
+      : route.path === '/chart'
+      ? 'summary'
+      : '';
 });
 
 function navigate(viewName) {
@@ -65,7 +95,7 @@ header {
 }
 
 .btn_group {
-  width: 200px;
+  width: 250px;
   display: flex;
   justify-content: center; /* 버튼을 가운데 정렬 */
   background-color: #eeeeee; /* 전체 배경색 */
@@ -75,7 +105,7 @@ header {
 .btn_group .btn {
   flex: 1;
   margin: 0;
-  padding: 10px 0;
+  padding: 10px 10px;
   background-color: transparent; /* 버튼 배경색을 투명으로 */
   border: none; /* 기본 테두리 제거 */
   border-radius: 30px;
@@ -83,7 +113,7 @@ header {
   position: relative;
   z-index: 0; /* 기본 z-index */
   font-weight: bold;
-  font-size: 14px;
+  font-size: 20px;
   color: grey;
   transition: background-color 0.3s; /* 배경색 변경 애니메이션 */
 }
@@ -100,7 +130,7 @@ header {
   color: black; /* 아이콘 색상 */
   cursor: pointer;
   position: absolute;
-  right: 25px; /* 오른쪽에 위치 */
+  right: 20px; /* 오른쪽에 위치 */
 }
 
 /* .btn_group button:hover {

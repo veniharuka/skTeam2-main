@@ -10,55 +10,61 @@
     </div>
 
     <SummaryStats
-      :income="totalIncome"
-      :expense="totalExpense"
+      :income="monthlyIncome"
+      :expense="monthlyExpense"
       :filters="filters"
       @updateFilter="setFilter"
     />
 
-    <!-- 요일 -->
-    <div class="days_of_week mt-3">
-      <div
-        class="days"
-        v-for="(day, index) in daysOfWeek"
-        :key="day"
-        :class="{ sunday: index === 0, saturday: index === 6 }"
-      >
-        {{ day }}
-      </div>
-    </div>
-    <!-- 날짜 -->
-    <div class="grid">
-      <!-- 시작 날짜 전에 빈 칸 생성 -->
-      <div class="day" v-for="blank in blankDays" :key="'blank-' + blank"></div>
-      <div class="day" v-for="day in days" :key="day.dateString">
+    <div class="calendar-container">
+      <!-- 요일 -->
+      <div class="days_of_week mt-3">
         <div
-          class="date"
-          :class="{
-            sunday: new Date(year, month - 1, day.date).getDay() === 0,
-            saturday: new Date(year, month - 1, day.date).getDay() === 6,
-          }"
+          class="days"
+          v-for="(day, index) in daysOfWeek"
+          :key="day"
+          :class="{ sunday: index === 0, saturday: index === 6 }"
         >
-          <div class="date">{{ day.date }}</div>
-          <div class="day_details">
-            <div v-if="filters.showIncome && day.income" class="income">
-              {{ formatNumber(day.income) }}
-            </div>
-            <div v-if="filters.showExpense && day.expense" class="expense">
-              {{ formatNumber(day.expense) }}
-            </div>
-            <div v-if="filters.showBalance && day.balance" class="balance">
-              {{ formatNumber(day.balance) }}
+          {{ day }}
+        </div>
+      </div>
+      <!-- 날짜 -->
+      <div class="grid">
+        <!-- 시작 날짜 전에 빈 칸 생성 -->
+        <div
+          class="day"
+          v-for="blank in blankDays"
+          :key="'blank-' + blank"
+        ></div>
+        <div class="day" v-for="day in days" :key="day.dateString">
+          <div
+            class="date"
+            :class="{
+              sunday: new Date(year, month - 1, day.date).getDay() === 0,
+              saturday: new Date(year, month - 1, day.date).getDay() === 6,
+            }"
+          >
+            <div class="date">{{ day.date }}</div>
+            <div class="day_details">
+              <div v-if="filters.showIncome && day.income" class="income">
+                {{ formatNumber(day.income) }}
+              </div>
+              <div v-if="filters.showExpense && day.expense" class="expense">
+                {{ formatNumber(day.expense) }}
+              </div>
+              <div v-if="filters.showBalance && day.balance" class="balance">
+                {{ formatNumber(day.balance) }}
+              </div>
             </div>
           </div>
         </div>
+        <!-- 마지막 날짜 뒤에 빈 칸 생성 -->
+        <div
+          class="day"
+          v-for="blank in blankDaysEnd"
+          :key="'blank-end-' + blank"
+        ></div>
       </div>
-      <!-- 마지막 날짜 뒤에 빈 칸 생성 -->
-      <div
-        class="day"
-        v-for="blank in blankDaysEnd"
-        :key="'blank-end-' + blank"
-      ></div>
     </div>
   </div>
 </template>
@@ -91,13 +97,16 @@ const expense = computed(() => transactionStore.expense);
 
 const data = ref({});
 
-const totalIncome = computed(() => transactionStore.totalIncome);
-const totalExpense = computed(() => transactionStore.totalExpense);
+const monthlyIncome = ref(0);
+const monthlyExpense = ref(0);
+
+const transactions = computed(() => transactionStore.total);
 
 async function fetchData() {
   let makeObj = {};
 
   const incomeArr = income.value;
+  const expenseArr = expense.value;
 
   for (let i = 0; i < incomeArr.length; i++) {
     const sliceDate = incomeArr[i].date.slice(0, 10);
@@ -112,8 +121,6 @@ async function fetchData() {
       makeObj[sliceDate].income += parseInt(incomeArr[i].amount);
     }
   }
-
-  const expenseArr = expense.value;
 
   for (let i = 0; i < expenseArr.length; i++) {
     const sliceDate = expenseArr[i].date.slice(0, 10);
@@ -145,6 +152,9 @@ watch([year, month, data], () => {
 });
 
 function updateCalendar(year, month) {
+  const incomeArr = income.value;
+  const expenseArr = expense.value;
+
   const firstDayOfMonth = new Date(year, month - 1, 1).getDay(); // 첫 번째 날의 요일 계산
   const lastDateOfMonth = new Date(year, month, 0).getDate(); // 해당 월의 마지막 날짜 계산
   const lastDayOfMonth = new Date(year, month - 1, lastDateOfMonth).getDay(); // 마지막 날의 요일 계산
@@ -152,6 +162,24 @@ function updateCalendar(year, month) {
   blankDays.value = Array(firstDayOfMonth).fill(null); // 빈 칸 배열 설정
   days.value = generateDays(year, month); // 날짜 배열 설정
   blankDaysEnd.value = Array((7 - (lastDayOfMonth + 1)) % 7).fill(null); // 마지막 날짜 뒤의 빈 칸 배열 설정
+
+  calculateMonthlySummary(year, month);
+}
+
+function calculateMonthlySummary(year, month) {
+  monthlyIncome.value = 0;
+  monthlyExpense.value = 0;
+
+  for (const [date, value] of Object.entries(data.value)) {
+    const transactionDate = new Date(date);
+    if (
+      transactionDate.getFullYear() === year &&
+      transactionDate.getMonth() + 1 === month
+    ) {
+      if (value.income) monthlyIncome.value += value.income;
+      if (value.expense) monthlyExpense.value += value.expense;
+    }
+  }
 }
 
 function prevMonth() {
@@ -232,14 +260,19 @@ updateCalendar(year.value, month.value); // 초기 달력 설정
 .container {
   max-width: 375px;
   margin: 0 auto; /* 가운데 정렬 */
+  padding: 0;
 }
 .calendar_header {
   display: flex;
   height: 80px;
-  font-size: 17px;
+  font-size: 20px;
   justify-content: space-between;
   align-items: center;
   padding: 10px 20px 0 20px;
+}
+
+.calendar-container {
+  padding: 0 10px;
 }
 
 .calendar_month {
@@ -249,7 +282,7 @@ updateCalendar(year.value, month.value); // 초기 달력 설정
 .days_of_week {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  font-size: 12px;
+  font-size: 16px;
   height: 30px;
   text-align: center;
 }
@@ -288,13 +321,14 @@ updateCalendar(year.value, month.value); // 초기 달력 설정
 }
 
 .date {
-  font-weight: normal;
-  font-size: 10px;
+  font-weight: bold;
+  font-size: 16px;
   text-align: left;
 }
 
 .day_details {
-  font-size: 9px;
+  font-weight: bold;
+  font-size: 10px;
   position: absolute; /* 부모 요소를 기준으로 위치 설정 */
   text-align: right; /* 텍스트를 오른쪽 정렬 */
   font-weight: bold;

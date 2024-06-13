@@ -7,3 +7,9 @@ import { RouterLink, RouterView } from 'vue-router';
     <router-view />
   </div>
 </template>
+
+<style>
+#app {
+  font-family: 'Ownglyph_ryuttung-Rg';
+}
+</style>
