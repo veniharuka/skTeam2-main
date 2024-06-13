@@ -19,18 +19,14 @@ export const useTransactionStore = defineStore('transaction', () => {
       state.expense = expenseRes.data;
 
       state.total = [
-        ...incomeRes.data.map((item) => {
-          return {
-            ...item,
-            type: 'income',
-          };
-        }),
-        ...expenseRes.data.map((item) => {
-          return {
-            ...item,
-            type: 'expense',
-          };
-        }),
+        ...incomeRes.data.map((item) => ({
+          ...item,
+          type: 'income',
+        })),
+        ...expenseRes.data.map((item) => ({
+          ...item,
+          type: 'expense',
+        })),
       ];
 
       state.total = state.total.sort((a, b) => {
@@ -58,56 +54,12 @@ export const useTransactionStore = defineStore('transaction', () => {
 
   const account = computed(() => [...state.income, ...state.expense]);
 
-  // const totalIncome = computed(() =>
-  //   state.income.reduce((sum, item) => {
-  //     console.log(item);
-  //     sum + Number(item.amount);
-  //   }, 0)
-  // );
-  // console.log(totalIncome.value);
-
-  // const totalExpense = computed(() => state.expense.reduce((sum, item) => sum + Number(item.amount), 0));
-
-  // const balance = computed(() => totalIncome.value - totalExpense.value);
-  // console.log(state);
-
-  const transactions = ref([
-    {
-      id: 1,
-      date: '2024-06-10',
-      description: '서브웨이',
-      method: '카드',
-      amount: -30000,
-    },
-    {
-      id: 2,
-      date: '2024-06-10',
-      description: '용돈',
-      method: '현금',
-      amount: 50000,
-    },
-    {
-      id: 3,
-      date: '2024-06-07',
-      description: '용돈',
-      method: '현금',
-      amount: 50000,
-    },
-    {
-      id: 4,
-      date: '2024-06-07',
-      description: '용돈',
-      method: '현금',
-      amount: 50000,
-    },
-  ]);
-
-  const totalBalance = computed(() => income.value - expenses.value);
+  const totalBalance = computed(() => state.totalIncome - state.totalExpense);
 
   const getTransactionsForMonth = (date) => {
     const month = date.getMonth();
     const year = date.getFullYear();
-    return transactions.value.filter((transaction) => {
+    return state.total.filter((transaction) => {
       const transactionDate = new Date(transaction.date);
       return (
         transactionDate.getMonth() === month &&
@@ -118,14 +70,14 @@ export const useTransactionStore = defineStore('transaction', () => {
 
   const getIncomeForMonth = (date) => {
     return getTransactionsForMonth(date)
-      .filter((transaction) => transaction.amount > 0)
-      .reduce((sum, transaction) => sum + transaction.amount, 0);
+      .filter((transaction) => transaction.type === 'income')
+      .reduce((sum, transaction) => sum + parseInt(transaction.amount), 0);
   };
 
   const getExpensesForMonth = (date) => {
     return getTransactionsForMonth(date)
-      .filter((transaction) => transaction.amount < 0)
-      .reduce((sum, transaction) => sum + transaction.amount, 0);
+      .filter((transaction) => transaction.type === 'expense')
+      .reduce((sum, transaction) => sum + parseInt(transaction.amount), 0);
   };
 
   const getTotalBalanceForMonth = (date) => {
@@ -160,6 +112,21 @@ export const useTransactionStore = defineStore('transaction', () => {
     }
   }
 
+  async function deleteTransaction(transaction) {
+    try {
+      const deleteResponse = await axios.delete(
+        `http://localhost:3000/${transaction.type}/${transaction.id}`
+      );
+
+      if (deleteResponse.status !== 200) return alert('삭제 실패');
+
+      fetchTransactions(); // 삭제 후 목록 갱신
+    } catch (error) {
+      alert('데이터 통신 오류 발생');
+      console.error(error);
+    }
+  }
+
   const income = computed(() => state.income);
   const expense = computed(() => state.expense);
   const total = computed(() => state.total);
@@ -170,12 +137,12 @@ export const useTransactionStore = defineStore('transaction', () => {
     income,
     expense,
     total,
-    transactions,
     totalBalance,
     totalIncome,
     totalExpense,
     addIncomeTransaction,
     addExpenseTransaction,
+    deleteTransaction,
     getTransactionsForMonth,
     getIncomeForMonth,
     getExpensesForMonth,

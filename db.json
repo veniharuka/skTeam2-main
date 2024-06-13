@@ -22,13 +22,6 @@
       "content": "6월 이자"
     },
     {
-      "id": "e24f",
-      "date": "2024-06-10T15:12:07.067Z",
-      "category": "용돈",
-      "amount": "10000000",
-      "content": "코인 대박"
-    },
-    {
       "id": "233e",
       "type": "income",
       "date": "2024-06-12",
@@ -43,14 +36,6 @@
       "amount": 10000,
       "category": "교통비",
       "content": "####"
-    },
-    {
-      "id": "ce7e",
-      "type": "income",
-      "date": "2024-06-17",
-      "amount": 10000,
-      "category": "기타",
-      "content": "1234"
     },
     {
       "id": "2ccd",
@@ -120,20 +105,20 @@
       "content": "3333"
     },
     {
-      "id": "ce33",
-      "type": "expense",
-      "date": "2024-06-18",
-      "amount": 30000,
-      "category": "식비",
-      "description": "샌드위치"
-    },
-    {
       "id": "f308",
       "type": "expense",
       "date": "2024-07-19",
       "amount": 500000,
       "category": "기타",
       "description": "호텔"
+    },
+    {
+      "id": "29f2",
+      "type": "expense",
+      "date": "2024-07-18",
+      "amount": 222222,
+      "category": "쇼핑",
+      "description": "옷"
     }
   ],
   "expenseCategory": [

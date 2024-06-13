@@ -17,41 +17,41 @@
     />
 
     <div class="transactions">
-    <div v-for="(groupedTransaction, date) in filteredGroupedTransactions" :key="date">
-      <div class="transaction-date">
-        <span>
-          <button class="bold-date" @click="toggleTransactionVisibility(date)">
-            {{ formatDateWithoutMonth(date) }} ({{ formatDayOfWeek(date) }})
-          </button>
-        </span>
-      </div>
-      <div v-show="isVisible(date)">
-        <div v-if="groupedTransaction.length > 0">
-          <div v-for="transaction in groupedTransaction" :key="transaction.id">
-            <div class="transaction">
-              <div class="transaction-details">
-                <div class="method" style="flex-basis: 80px; flex-grow: 0">
-                  {{ transaction.category }}
+      <div v-for="(groupedTransaction, date) in filteredGroupedTransactions" :key="date">
+        <div class="transaction-date">
+          <span>
+            <button class="bold-date" @click="toggleTransactionVisibility(date)">
+              {{ formatDateWithoutMonth(date) }} ({{ formatDayOfWeek(date) }})
+            </button>
+          </span>
+        </div>
+        <div v-show="isVisible(date)">
+          <div v-if="groupedTransaction.length > 0">
+            <div v-for="transaction in groupedTransaction" :key="transaction.id">
+              <div class="transaction">
+                <div class="transaction-details">
+                  <div class="method" style="flex-basis: 80px; flex-grow: 0">
+                    {{ transaction.category }}
+                  </div>
+                  <div class="description" style="flex-basis: 100px">
+                    {{ transaction.content }}
+                  </div>
+                  <div :class="{ blue: transaction.type === 'income', red: transaction.type === 'expense' }">
+                    {{ formatAmount(parseInt(transaction.amount)) }}원
+                  </div>
+                  <button class="delete-button" @click="deleteTransaction(transaction)">
+                    <i class="bi bi-trash-fill"></i>
+                  </button>
                 </div>
-                <div class="description" style="flex-basis: 100px">
-                  {{ transaction.content }}
-                </div>
-                <div :class="{ blue: transaction.type === 'income', red: transaction.type === 'expense' }">
-                  {{ formatAmount(parseInt(transaction.amount)) }}원
-                </div>
-                <button class="delete-button" @click="deleteTransaction(transaction)">
-                  삭제
-                </button>
               </div>
             </div>
           </div>
-        </div>
-        <div v-else>
-          <p class="no-transactions">이 날짜에는 거래 내역이 없습니다.</p>
+          <div v-else>
+            <p class="no-transactions">이 날짜에는 거래 내역이 없습니다.</p>
+          </div>
         </div>
       </div>
     </div>
-  </div>
     <div class="footer">
       <button @click="showModal = true"><i class="fa fa-plus"></i></button>
     </div>
@@ -240,15 +240,7 @@ function isVisible(date) {
 }
 
 function deleteTransaction(transaction) {
-  // 화면에서 거래 삭제
-  const date = transaction.date;
-  const index = groupedTransactions.value[date].findIndex(
-    t => t.id === transaction.id
-  );
-  groupedTransactions.value[date].splice(index, 1);
-
-  // DB에서도 삭제 (여기에 실제 DB 삭제 로직을 추가해야 합니다)
-  // transactionStore.deleteTransaction(transaction.id); // 예시일 뿐 실제 사용할 때는 이 코드를 사용하면 됩니다.
+  transactionStore.deleteTransaction(transaction);
 }
 
 watch([year, month, transactions], () => {
@@ -261,4 +253,3 @@ onMounted(() => {
 </script>
 
 <style src="@/assets/Home.css"></style>
-
